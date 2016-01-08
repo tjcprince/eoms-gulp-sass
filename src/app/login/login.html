@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">电子运维系统</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form name="loginForm" class="form-horizontal" ng-submit="vm.login()">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-md-2 control-label">用户名:</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" ng-model="vm.userInfo.userName" required></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-md-2 control-label">密码:</label>
+                            <div class="col-md-10">
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="vm.userInfo.password" required></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-success btn-lg"  >登录</button>
+                                <button type="reset" class="btn btn-default btn-lg" >重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
