@@ -6,13 +6,8 @@
 		.controller('HomeController', HomeController);
 
 	/** @ngInject */
-	function HomeController($log, $state,$location) {
+	function HomeController($log, $state) {
 		var vm = this;
-$log.info($location.path());
-	vm.isActive = function (viewLocation) { 
-		var flag=$location.path().indexOf(viewLocation);
-        return flag==0;
-    };
 
 		vm.titleArray = [{
 			name: "首页",
@@ -22,6 +17,8 @@ $log.info($location.path());
 			id: 1
 		}];
 
-		$state.go("home.booklist",{'id':0});
+		$state.go("home.booklist", {
+			'id': 0
+		});
 	}
 })();
