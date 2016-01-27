@@ -8,12 +8,6 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('main', {
-        url: '/main',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'main'
-      })
       .state('login', {
         url: '/login',
         templateUrl: 'app/login/login.html',
@@ -29,20 +23,29 @@
             controllerAs: 'vm'
           }
         }
+      }).state("home.main", {
+        url: "/main/{homeid:[0-9]{1,4}}",
+        views: {
+          "": {
+            templateUrl: "app/main/main.html",
+            controller: 'MainController',
+            controllerAs: 'vm'
+          }
+        }
       })
-      .state("home.booklist", {
-        url: "/booklist/{id:[0-9]{1,4}}",
+      .state("home.main.booklist", {
+        url: "/booklist/{mainid:[0-9]{1,4}}",
         views: {
           "": {
             templateUrl: "app/book/booklist.html"
           },
-          "booktype@home.booklist": {
+          "booktype@home.main.booklist": {
             templateUrl: "app/book/booktype.html",
             controller: 'BookTypeController',
             controllerAs: 'vm'
           }
         }
-      }).state("home.booklist.bookgrid", {
+      }).state("home.main.booklist.bookgrid", {
         url: "/bookgrid/{bookTypeId:[0-9]{1,4}}",
         views: {
           "": {

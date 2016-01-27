@@ -7,6 +7,6 @@
 
 	/** @ngInject */
 	function BookTypeController($log, $state) {
-		$state.go("home.booklist.bookgrid",{bookTypeId:0});	
+		$state.go("home.main.booklist.bookgrid",{bookTypeId:0});	
 	}
 })();

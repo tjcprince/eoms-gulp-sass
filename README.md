@@ -11,5 +11,8 @@ eoms前端项目 gulp+bower+angular+bootstrap
 第二种方案
 把bower_components/ui-navbar/release/css/中的ui-navbar.css放到src/app中 并且修改名字为ui-navbar.scss
 暂时使用的是第一种方案
+2.app/components/abntree树形菜单的相关文档
+https://github.com/nickperkinslondon/angular-bootstrap-nav-tree
+使用是一样的，已经稍微改造过
 
 

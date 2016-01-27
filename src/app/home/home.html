@@ -15,40 +15,37 @@
         <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
 
             <ul class="nav navbar-nav">
-                <li dropdown>
-                    <a href="#" dropdown-toggle>
-                        导航
-                        <b class='caret'></b>
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
+                        导航 <b class='caret'></b>
                     </a>
-                    <tree tree='vm.tree'></tree>
+                    <tree tree='vm.navtree'></tree>
                 </li>
-                <li dropdown>
-                    <a href="#" dropdown-toggle>
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
                         Just a clone
                         <span class='caret'></span>
                     </a>
-                    <tree tree='vm.tree'></tree>
+                    <tree tree='vm.navtree'></tree>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li dropdown>
-                    <a href="#" dropdown-toggle>
-                        Dropdown right
-                        <b class='caret'></b>
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
+                        Dropdown right <b class='caret'></b>
                     </a>
-                    <tree tree='vm.tree'></tree>
+                    <tree tree='vm.navtree'></tree>
                 </li>
-                <li dropdown>
-                    <a href="#" dropdown-toggle>
+                <li uib-dropdown>
+                    <a href="#" uib-dropdown-toggle>
                         Just a clone right
                         <span class='caret'></span>
                     </a>
-                    <tree tree='vm.tree'></tree>
+                    <tree tree='vm.navtree'></tree>
                 </li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
-    </nav>
-</div>
+        <!-- /.navbar-collapse --> </nav>
 
-<div ui-view></div>
+    <div ui-view></div>
+</div>
