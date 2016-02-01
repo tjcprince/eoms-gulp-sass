@@ -1,5 +1,7 @@
 {
-	"results": [{
+	"user": [{
+		"userId":"userid10000000",
+		"userRole":"admin",
 		"userName": "tan",
 		"loginStatus": "1"
 	}]

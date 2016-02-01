@@ -6,13 +6,16 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider, USER_ROLES) {
     $stateProvider
       .state('login', {
         url: '/login',
         templateUrl: 'app/login/login.html',
         controller: 'LoginController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+        }
       })
       .state("home", {
         url: "/home",
@@ -22,6 +25,9 @@
             controller: 'HomeController',
             controllerAs: 'vm'
           }
+        },
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
       }).state("home.main", {
         url: "/main/{homeid:[0-9]{1,4}}",
@@ -31,6 +37,9 @@
             controller: 'MainController',
             controllerAs: 'vm'
           }
+        },
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
       })
       .state("home.main.booklist", {
@@ -44,6 +53,9 @@
             controller: 'BookTypeController',
             controllerAs: 'vm'
           }
+        },
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
       }).state("home.main.booklist.bookgrid", {
         url: "/bookgrid/{bookTypeId:[0-9]{1,4}}",
@@ -53,6 +65,9 @@
             controller: 'BookGridController',
             controllerAs: 'vm'
           }
+        },
+        data: {
+          authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         }
       });
 
