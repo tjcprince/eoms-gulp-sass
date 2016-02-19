@@ -6,7 +6,7 @@
 		.service('LoginService', LoginService);
 
 	/** @ngInject*/
-	function LoginService($http, $log,wsCache) {
+	function LoginService($http, $log, wsCache) {
 
 		var service = {
 			getLogin: getLogin,
@@ -41,6 +41,7 @@
 			return (isAuthenticated() &&
 				authorizedRoles.indexOf(angular.fromJson(wsCache.get('user')).userRole) !== -1);
 		}
+
 	}
 
 })();

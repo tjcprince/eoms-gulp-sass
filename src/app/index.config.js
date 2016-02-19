@@ -3,7 +3,7 @@
 
   angular
     .module('eomsGulpSass')
-    .config(config).config(authConfig)
+    .config(config).config(authConfig).config(restangularConfig)
     .factory('AuthInterceptor', function($rootScope, $q,
       AUTH_EVENTS) {
       return {
@@ -31,13 +31,29 @@
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
   }
-
+  /** @ngInject */
   function authConfig($httpProvider) {
-      $httpProvider.interceptors.push([
-        '$injector',
-        function($injector) {
-          return $injector.get('AuthInterceptor');
-        }
-      ]);
-    }
+    $httpProvider.interceptors.push([
+      '$injector',
+      function($injector) {
+        return $injector.get('AuthInterceptor');
+      }
+    ]);
+  }
+  /** @ngInject */
+  function restangularConfig(RestangularProvider) {
+    RestangularProvider.setBaseUrl('app/data');
+    RestangularProvider.setRequestSuffix('.json');
+
+    RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+      var extractedData;
+      if (operation === "getList") {
+        extractedData = data.data;
+      } else {
+        extractedData = data;
+      }
+      return extractedData;
+    });
+
+  }
 })();
