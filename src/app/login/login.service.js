@@ -6,12 +6,10 @@
 		.service('LoginService', LoginService);
 
 	/** @ngInject*/
-	function LoginService($http, $log, wsCache) {
+	function LoginService($http, $log) {
 
 		var service = {
-			getLogin: getLogin,
-			isAuthenticated: isAuthenticated,
-			isAuthorized: isAuthorized
+			getLogin: getLogin
 		};
 
 		return service;
@@ -28,18 +26,6 @@
 			function getLoginFailed(error) {
 				$log.error('XHR Failed for getAvengers.' + error.data);
 			}
-		}
-
-		function isAuthenticated() {
-			return !!angular.fromJson(wsCache.get('user')).userId;
-		}
-
-		function isAuthorized(authorizedRoles) {
-			if (!angular.isArray(authorizedRoles)) {
-				authorizedRoles = [authorizedRoles];
-			}
-			return (isAuthenticated() &&
-				authorizedRoles.indexOf(angular.fromJson(wsCache.get('user')).userRole) !== -1);
 		}
 
 	}

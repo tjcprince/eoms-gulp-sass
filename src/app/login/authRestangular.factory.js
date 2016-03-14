@@ -3,10 +3,10 @@
 
 	angular
 		.module('eomsGulpSass')
-		.factory('UserRestangularFactory', UserRestangularFactory);
+		.factory('AuthRestangularFactory', AuthRestangularFactory);
 
 	/** @ngInject*/
-	function UserRestangularFactory(Restangular) {
+	function AuthRestangularFactory(Restangular) {
 		return Restangular.withConfig(function(RestangularConfigurer) {
 			RestangularConfigurer.setBaseUrl('http://localhost:8080/eoms2016/auth/');
 		});
