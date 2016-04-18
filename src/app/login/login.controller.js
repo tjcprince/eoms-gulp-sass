@@ -6,7 +6,7 @@
 		.controller('LoginController', LoginController);
 
 	/** @ngInject */
-	function LoginController($log, LoginService, $state, $auth, toastr, SatellizerShared, SatellizerConfig, SatellizerStorage) {
+	function LoginController($log, LoginService, $state, $auth, toastr, SatellizerShared, SatellizerConfig, SatellizerStorage,ngProgressFactory) {
 		var vm = this;
 		vm.login = login;
 		vm.authenticate = authenticate;
@@ -45,6 +45,9 @@
 
 		function login() {
 			$auth.removeToken(); //清除token
+			vm.progressbar = ngProgressFactory.createInstance();
+			vm.progressbar.setColor('#63A3FF');
+			vm.progressbar.start();
 			$auth.login(vm.user, {
 					'url': 'http://localhost:8080/eoms2016/auth/login',
 					'method': 'post',
@@ -57,6 +60,7 @@
 					} else {
 						toastr.success('You have successfully signed in!');
 						$state.go("home");
+						vm.progressbar.complete();
 					}
 				})
 				.catch(function(error) {

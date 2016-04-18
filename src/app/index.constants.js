@@ -5,5 +5,5 @@
 	angular
 		.module('eomsGulpSass')
 		.constant('malarkey', malarkey)
-		.constant('moment', moment)
+		.constant('moment', moment);
 })();

@@ -6,7 +6,8 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $logProvider, $urlRouterProvider, $authProvider, $windowProvider) {
+  function routerConfig($stateProvider, $logProvider, $urlRouterProvider, $authProvider, $windowProvider,$locationProvider) {
+    $locationProvider.html5Mode(true);//去掉url中的#
     var $window = $windowProvider.$get();
     $stateProvider
       .state('login', {
@@ -19,7 +20,7 @@
       .state('signup', {
         url: '/signup',
         resolve: {
-          skipIfLoggedIn: skipIfLoggedIn
+          loginRequired: loginRequired
         },
         templateUrl: 'app/login/signup.html',
         controller: 'SignupController',
@@ -37,7 +38,47 @@
             controllerAs: 'vm'
           }
         }
-      }).state("home.main", {
+      })
+      .state("home.ngtable", {
+        url: "/ngtable/{homeid:[0-9]{1,4}}",
+        resolve: {
+          loginRequired: loginRequired
+        },
+        views: {
+          "": {
+            templateUrl: "app/ngtable/ngtable.html",
+            controller: 'NgtableController',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state("home.anchorpage", {
+        url: "/anchorpage",
+        resolve: {
+          loginRequired: loginRequired
+        },
+        views: {
+          "": {
+            templateUrl: "app/anchorpage/anchorpage.html",
+            controller: 'AnchorpageController',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state("home.fullpage", {
+        url: "/fullpage/{homeid:[0-9]{1,4}}",
+        resolve: {
+          loginRequired: loginRequired
+        },
+        views: {
+          "": {
+            templateUrl: "app/fullpage/fullpage.html",
+            controller: 'FullpageController',
+            controllerAs: 'vm'
+          }
+        }
+      })
+      .state("home.main", {
         url: "/main/{homeid:[0-9]{1,4}}",
         resolve: {
           loginRequired: loginRequired
@@ -80,7 +121,7 @@
       });
 
     $urlRouterProvider.otherwise('/login');
-
+    
     $authProvider.facebook({
       clientId: '657854390977827'
     });
@@ -129,15 +170,15 @@
       authorizationEndpoint: 'https://foursquare.com/oauth2/authenticate'
     });
 
-    function skipIfLoggedIn($q, $auth) {
-      var deferred = $q.defer();
-      if ($auth.isAuthenticated()) {
-        deferred.reject();
-      } else {
-        deferred.resolve();
-      }
-      return deferred.promise;
-    }
+    // function skipIfLoggedIn($q, $auth) {
+    //   var deferred = $q.defer();
+    //   if ($auth.isAuthenticated()) {
+    //     deferred.reject();
+    //   } else {
+    //     deferred.resolve();
+    //   }
+    //   return deferred.promise;
+    // }
 
     function loginRequired($q, $location, $auth) {
       var deferred = $q.defer();

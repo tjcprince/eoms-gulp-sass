@@ -48,7 +48,7 @@
               innerObj[fullSubName] = subValue;
               query += param(innerObj) + '&';
             }
-          } else if (value !== undefined && value !== null) {
+          } else if (angular.isDefined(value) && value !== null) {
             query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
           }
         }
@@ -88,7 +88,7 @@
     //         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
     //     });
 
-    RestangularProvider.addResponseInterceptor(function(data, operation, what, url, response, deferred) {
+    RestangularProvider.addResponseInterceptor(function(data, operation) {
       var extractedData;
       if (operation === "getList") {
         extractedData = data.entity;

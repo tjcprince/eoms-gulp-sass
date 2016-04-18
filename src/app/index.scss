@@ -11,7 +11,15 @@ $fa-font-path: "../bower_components/font-awesome/fonts/";
  */
 // bower:scss
 // endbower
-body { padding-top: 50px; }
+html,body{  
+  // height:100%;  
+  // margin:0px;
+  // padding: 0px;
+} 
+body { padding-top: 70px; }
+.indexDiv{
+	// height: 100%;
+}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
