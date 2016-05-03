@@ -15,6 +15,13 @@ The first selector is for Angular 1.1.5
 The second selector is for Angular 1.2.0
 
 */
+/**
+ * 去掉li添加ng-click后,点击出现的蓝色边框
+ * 
+ */
+i{
+    outline:none;
+}
 .abn-tree-animate-enter,
 li.abn-tree-row.ng-enter {
   transition: 200ms linear all;

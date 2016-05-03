@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-init="navCollapsed = true"
@@ -26,8 +27,8 @@
                     </a>
                     <tree tree='vm.navtree1'></tree>
                 </li>
+                <li data-template-url="app/commons/navTree.html" data-placement="right" data-animation="am-slide-right" bs-aside="vm.aside" data-container="body"><a href="#" style="cursor:pointer">菜单</a></li>
             </ul>
-
             <ul class="nav navbar-nav">
                 <li uib-dropdown >
                     <a href="#" uib-dropdown-toggle>
@@ -82,4 +83,4 @@
         </div>
         <!-- /.navbar-collapse --> 
     </nav>
-    <div class="inToOut_Animation" ui-view></div>
+   <div class="inToOut_Animation" ui-view></div>
