@@ -49,7 +49,7 @@
 			vm.progressbar.setColor('#63A3FF');
 			vm.progressbar.start();
 			$auth.login(vm.user, {
-					'url': 'http://10.50.14.19:8080/eoms2016/auth/login',
+					'url': 'http://localhost:8080/eoms2016/auth/login',
 					'method': 'post',
 					'data': vm.user
 				})
